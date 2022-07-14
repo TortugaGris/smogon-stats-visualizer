@@ -1,9 +1,10 @@
 <script setup>
 import ThePokemonImage from './ThePokemonImage.vue'
+import Speedometer from './Speedometer.vue'
 import json from '../data/gen8ou-1825.json'
 const pokemons = json.data
 const pokemon_array = Object.keys(pokemons)
-const index=39
+const index=69;
 const pokemon_name = pokemon_array[index].toLowerCase()
 const current_pokemon = pokemons[pokemon_array[index]]
 </script>
@@ -11,7 +12,7 @@ const current_pokemon = pokemons[pokemon_array[index]]
 <template>
     <div class="chart-container">
         <ThePokemonImage :pokemon_name="pokemon_name"/>
-        <div class="chart">{{current_pokemon.usage}}</div>
+        <Speedometer :usage="current_pokemon.usage"/>
         <div class="chart">{{current_pokemon['Viability Ceiling']}}</div>
         <div class="chart">{{current_pokemon['Raw count']}}</div>
         <div class="chart">{{current_pokemon['Moves']}}</div>
