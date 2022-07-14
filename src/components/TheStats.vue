@@ -17,8 +17,19 @@ const current_pokemon = pokemons[pokemon_array[index]]
             <Speedometer :usage="current_pokemon.usage"/>
             <h2>Usage</h2>
         </div>
-        <div class="chart">{{current_pokemon['Viability Ceiling']}}</div>
-        <div class="chart">{{current_pokemon['Raw count']}}</div>
+        <div class="chart-player-num">
+            <h2>Number of players using {{pokemon_array[index]}}</h2>
+            <p>{{current_pokemon['Viability Ceiling'][0]}}</p>
+        </div>
+        <div class="chart-viability">
+            <h2>Viability Ceiling</h2>
+            <p>The <b>Best</b> {{pokemon_array[index]}} player has a GXE of 
+            <b>{{current_pokemon['Viability Ceiling'][1]}}</b></p>
+            <p> To be on the <b>Top 1%</b> of {{pokemon_array[index]}} players you need
+            a GXE of <b>{{current_pokemon['Viability Ceiling'][2]}}</b></p>
+            <p> To be on the <b>Top 5%</b> of {{pokemon_array[index]}} players you need
+            a GXE of <b>{{current_pokemon['Viability Ceiling'][3]}}</b></p>
+        </div>
         <div class="chart">
             <h2>Moves</h2>
             <BarChart :data="current_pokemon['Moves']"/>
@@ -79,5 +90,37 @@ const current_pokemon = pokemons[pokemon_array[index]]
     font-size: 2rem;
     font-weight: bold;
     letter-spacing: 5px;
+}
+
+.chart-container .chart-viability, 
+.chart-container .chart-player-num {
+    padding: 1rem;
+}
+
+.chart-container .chart-viability p {
+    margin: 0.5rem 0;
+    font-size: 1.25rem;
+}
+
+.chart-container .chart-viability h2,
+.chart-container .chart-player-num h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.chart-container .chart-viability b {
+    font-weight: bold;
+}
+
+.chart-container .chart-player-num {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-container .chart-player-num p {
+    font-size: 4rem;
+    font-weight: bold;
 }
 </style>
