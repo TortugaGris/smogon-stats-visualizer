@@ -1,32 +1,30 @@
 <script setup>
+import ThePokemonImage from './ThePokemonImage.vue'
 import json from '../data/gen8ou-1825.json'
 const pokemons = json.data
 const pokemon_array = Object.keys(pokemons)
-const index=47
+const index=39
 const pokemon_name = pokemon_array[index].toLowerCase()
+const current_pokemon = pokemons[pokemon_array[index]]
 </script>
 
 <template>
     <div class="chart-container">
-        <span class="pokesprite pokemon-gen8 profile" :class="pokemon_name"></span>
-        <div class="chart">{{pokemons[pokemon_array[index]].usage}}</div>
-        <div class="chart">{{pokemons[pokemon_array[index]]['Viability Ceiling']}}</div>
-        <div class="chart">{{pokemons[pokemon_array[index]]['Raw count']}}</div>
-        <div class="chart">{{pokemons[pokemon_array[index]]['Moves']}}</div>
-        <div class="chart">{{pokemons[pokemon_array[index]]['Abilities']}}</div>
-        <div class="chart">{{pokemons[pokemon_array[index]]['Teammates']}}</div>
-        <div class="chart">{{pokemons[pokemon_array[index]]['Spreads']}}</div>
-        <div class="chart">{{pokemons[pokemon_array[index]]['Items']}}</div>
-        <div class="chart">{{Object.keys(pokemons[pokemon_array[index]])}}</div>
+        <ThePokemonImage :pokemon_name="pokemon_name"/>
+        <div class="chart">{{current_pokemon.usage}}</div>
+        <div class="chart">{{current_pokemon['Viability Ceiling']}}</div>
+        <div class="chart">{{current_pokemon['Raw count']}}</div>
+        <div class="chart">{{current_pokemon['Moves']}}</div>
+        <div class="chart">{{current_pokemon['Abilities']}}</div>
+        <div class="chart">{{current_pokemon['Teammates']}}</div>
+        <div class="chart">{{current_pokemon['Spreads']}}</div>
+        <div class="chart">{{current_pokemon['Items']}}</div>
+        <div class="chart">{{pokemon_array}}</div>
     </div>
 </template>
 
 <style>
 @import '@/assets/pokesprite-pokemon-gen8.css';
-.profile {
-    --pixel-size: 5;
-    justify-self: center;
-}
 .chart-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
