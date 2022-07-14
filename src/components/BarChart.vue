@@ -5,6 +5,9 @@ const props = defineProps({
     type: Object,
     required: true
   },
+  title: {
+    type: String
+  }
 });
 
 const keysSorted = Object.keys(props.data).sort(function(a,b) {
@@ -24,19 +27,32 @@ const xScale = scaleLinear()
 </script>
 
 <template>
-    <svg class="center" :width="width" :height="2*height">
-        <g v-for="(value, key) in data" :transform="'translate(0,'+ (yScale(key)+24) + ')'">
-            <text y="-2">{{key}}</text>
-            <rect
-                :width="xScale(value)"
-                :height="yScale.bandwidth()/2"/>
-        </g>
-    </svg>
+    <div class="chart">
+        <h2>{{title}}</h2>
+        <svg class="center" :width="width" :height="2*height">
+            <g v-for="(value, key) in data" :transform="'translate(0,'+ (yScale(key)+24) + ')'">
+                <text y="-2">{{key}}</text>
+                <rect
+                    :width="xScale(value)"
+                    :height="yScale.bandwidth()/2"/>
+            </g>
+        </svg>
+    </div>
 </template>
 
 <style scoped>
 svg text {
     font-size: 1rem;
     font-weight: bold;
+}
+.chart {
+    overflow: auto;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 1rem;
+}
+
+.chart h2{
+    margin-bottom: 0.1rem; 
 }
 </style>

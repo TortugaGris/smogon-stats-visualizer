@@ -28,16 +28,19 @@ const mainArc = arc()
 </script>
 
 <template>
-    <svg class="center" :width="2*radius" :height="radius">
-        <g :transform="'translate(' + radius + ',' + radius+ ')'">
-            <path class="arc-background" :d="backgroundArc()"/>
-            <path class="arc-main" :d="mainArc()"/>
-            <text y="-1" text-anchor="middle">{{(usage*100).toFixed(2)}}%</text>
-        </g>
-    </svg>
+    <div class="chart-usage">
+        <svg class="center" :width="2*radius" :height="radius">
+            <g :transform="'translate(' + radius + ',' + radius+ ')'">
+                <path class="arc-background" :d="backgroundArc()"/>
+                <path class="arc-main" :d="mainArc()"/>
+                <text y="-1" text-anchor="middle">{{(usage*100).toFixed(2)}}%</text>
+            </g>
+        </svg>
+        <h2>Usage</h2>
+    </div>
 </template>
 
-<style>
+<style scoped>
 
 svg .arc-background {
     fill: var(--vt-c-white-mute);
@@ -50,6 +53,20 @@ svg .arc-main {
 svg text {
     font-size: 3.5rem;
     font-weight: bold;
+}
+
+.chart-usage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.chart-usage h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 5px;
 }
 
 </style>
