@@ -24,8 +24,8 @@ const xScale = scaleLinear()
 </script>
 
 <template>
-    <svg class="center" :width="width" :height="height">
-        <g v-for="(value, key) in data" :transform="'translate(0,'+ (yScale(key)+12) + ')'">
+    <svg class="center" :width="width" :height="2*height">
+        <g v-for="(value, key) in data" :transform="'translate(0,'+ (yScale(key)+24) + ')'">
             <text y="-2">{{key}}</text>
             <rect
                 :width="xScale(value)"
@@ -35,10 +35,6 @@ const xScale = scaleLinear()
 </template>
 
 <style scoped>
-.center {
-    justify-self: center;
-}
-
 svg text {
     font-size: 1rem;
     font-weight: bold;
