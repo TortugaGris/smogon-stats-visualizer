@@ -13,18 +13,32 @@ const current_pokemon = pokemons[pokemon_array[index]]
 <template>
     <div class="chart-container">
         <ThePokemonImage :pokemon_name="pokemon_name"/>
-        <Speedometer :usage="current_pokemon.usage"/>
+        <div class="chart-usage">
+            <Speedometer :usage="current_pokemon.usage"/>
+            <h2>Usage</h2>
+        </div>
         <div class="chart">{{current_pokemon['Viability Ceiling']}}</div>
         <div class="chart">{{current_pokemon['Raw count']}}</div>
         <div class="chart">
             <h2>Moves</h2>
             <BarChart :data="current_pokemon['Moves']"/>
         </div>
-        <div class="chart">{{current_pokemon['Abilities']}}</div>
-        <div class="chart">{{current_pokemon['Teammates']}}</div>
-        <div class="chart">{{current_pokemon['Spreads']}}</div>
-        <div class="chart">{{current_pokemon['Items']}}</div>
-        <div class="chart">{{pokemon_array}}</div>
+        <div class="chart">
+            <h2>Abilities</h2>
+            <BarChart :data="current_pokemon['Abilities']"/>
+        </div>
+        <div class="chart">
+            <h2>Teammates</h2>
+            <BarChart :data="current_pokemon['Teammates']"/>
+        </div>
+        <div class="chart">
+            <h2>Items</h2>
+            <BarChart :data="current_pokemon['Items']"/>
+        </div>
+        <div class="chart">
+            <h2>Spreads</h2>
+            <BarChart :data="current_pokemon['Spreads']"/>
+        </div>
     </div>
 </template>
 
@@ -44,11 +58,26 @@ const current_pokemon = pokemons[pokemon_array[index]]
 }
 
 .chart-container .chart {
-    border: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
     padding: 1rem;
 }
 
 .chart-container .chart h2{
-    margin-bottom: 0.5rem; 
+    margin-bottom: 0.1rem; 
+}
+
+.chart-container .chart-usage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.chart-container .chart-usage h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 5px;
 }
 </style>

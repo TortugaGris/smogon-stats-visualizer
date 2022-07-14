@@ -38,10 +38,6 @@ const mainArc = arc()
 </template>
 
 <style>
-.center {
-    justify-self: center;
-    align-self: center;
-}
 
 svg .arc-background {
     fill: var(--vt-c-white-mute);
