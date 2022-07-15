@@ -5,28 +5,32 @@ import BarChart from './BarChart.vue'
 import NumPlayers from './NumPlayers.vue'
 import ViabilityCeiling from './ViabilityCeiling.vue'
 import json from '../data/gen8ou-1825.json'
+import { useRoute } from 'vue-router'
 
-const pokemons = json.data
-const pokemon_array = Object.keys(pokemons)
-const index=39;
-const pokemon_name = pokemon_array[index].toLowerCase()
-const current_pokemon = pokemons[pokemon_array[index]]
+const route = useRoute();
+const pokemons = json.data;
+const pokemon_name = Object.keys(pokemons).includes(route.params.pokemon) ? (
+    route.params.pokemon) : (
+    Object.keys(pokemons)[39]);
+console.log(pokemon_name)
+const pokemon_image = pokemon_name.toLowerCase().replace(' ', '-');
+const current_pokemon = pokemons[pokemon_name];
 </script>
 
 <template>
     <div class="chart-container">
         <ThePokemonImage 
-            :pokemon_name="pokemon_name"
+            :pokemon_name="pokemon_image"
             class="grid1"/>
         <Speedometer 
             :usage="current_pokemon.usage"
             class="grid2"/>
         <NumPlayers 
             :numPlayers="current_pokemon['Viability Ceiling'][0]"
-            :name="pokemon_array[index]"
+            :name="pokemon_name"
             class="grid3"/>
         <ViabilityCeiling 
-            :name="pokemon_array[index]"
+            :name="pokemon_name"
             :best="current_pokemon['Viability Ceiling'][1]"
             :top1="current_pokemon['Viability Ceiling'][2]"
             :top5="current_pokemon['Viability Ceiling'][3]"
