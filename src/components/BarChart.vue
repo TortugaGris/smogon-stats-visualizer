@@ -47,8 +47,6 @@ svg text {
 }
 .chart {
     overflow: auto;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
     padding: 1rem;
 }
 

@@ -26,7 +26,7 @@ defineProps({
 }
 
 .chart-player-num h2 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: bold;
     text-align: center;
 }
