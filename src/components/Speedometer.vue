@@ -43,7 +43,7 @@ const mainArc = arc()
 <style scoped>
 
 svg .arc-background {
-    fill: var(--vt-c-white-mute);
+    fill: whitesmoke;
 }
 
 svg .arc-main {
