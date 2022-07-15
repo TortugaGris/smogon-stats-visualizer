@@ -8,7 +8,7 @@ import json from '../data/gen8ou-1825.json'
 
 const pokemons = json.data
 const pokemon_array = Object.keys(pokemons)
-const index=173;
+const index=39;
 const pokemon_name = pokemon_array[index].toLowerCase()
 const current_pokemon = pokemons[pokemon_array[index]]
 </script>
