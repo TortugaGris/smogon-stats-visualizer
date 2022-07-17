@@ -1,16 +1,20 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import { usePokemonStore } from '@/stores/pokemons'
+const pokemon_data = usePokemonStore();
 </script>
 
 <template>
   <header>
-    <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
-    <div class="wrapper">
-      <!-- <nav> -->
-      <!--   <RouterLink to="/">Home</RouterLink> -->
-      <!--   <RouterLink to="/about">About</RouterLink> -->
-      <!-- </nav> -->
-    </div>
+    <nav>
+      <RouterLink 
+        v-for="pokemon in pokemon_data.keys" 
+        :to="'/' + pokemon">
+          <span 
+            class="pokesprite pokemon-gen8" 
+            :class="pokemon.toLowerCase().replace(' ', '-')"/>
+      </RouterLink>
+    </nav>
   </header>
   <RouterView />
 </template>
@@ -21,6 +25,19 @@ import { RouterLink, RouterView } from 'vue-router'
 #app {
   margin: 0 auto;
   font-weight: normal;
+}
+
+nav {
+  --pixel-size: 1;
+  background-color: black;
+  width: var(--navbar-size);
+  height: 100vh;
+  position: fixed;
+  overflow: auto;
+}
+
+main {
+  margin-left: var(--navbar-size);
 }
 
 </style>

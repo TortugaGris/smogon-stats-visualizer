@@ -38,7 +38,7 @@ defineProps({
 
 .chart-viability p {
     margin: 0.5rem 0;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .chart-viability h2 {

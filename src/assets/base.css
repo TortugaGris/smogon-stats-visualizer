@@ -1,3 +1,6 @@
+:root {
+  --navbar-size: 75px;
+}
 
 *,
 *::before,

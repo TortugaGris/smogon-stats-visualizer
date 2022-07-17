@@ -9,3 +9,10 @@ import TheStats from '@/components/TheStats.vue'
   </main>
 </template>
 
+<style>
+main {
+  width: 100vw - var(--navbar-size);
+  height: 100vh;
+  padding: 1rem;
+}
+</style>

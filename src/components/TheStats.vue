@@ -1,20 +1,21 @@
 <script setup>
-import ThePokemonImage from './ThePokemonImage.vue'
-import Speedometer from './Speedometer.vue'
-import BarChart from './BarChart.vue'
-import NumPlayers from './NumPlayers.vue'
-import ViabilityCeiling from './ViabilityCeiling.vue'
-import json from '../data/gen8ou-1825.json'
-import { useRoute } from 'vue-router'
+import ThePokemonImage from './ThePokemonImage.vue';
+import Speedometer from './Speedometer.vue';
+import BarChart from './BarChart.vue';
+import NumPlayers from './NumPlayers.vue';
+import ViabilityCeiling from './ViabilityCeiling.vue';
+import { useRoute } from 'vue-router';
+import { usePokemonStore } from '@/stores/pokemons';
+import { computed } from 'vue';
 
 const route = useRoute();
-const pokemons = json.data;
-const pokemon_name = Object.keys(pokemons).includes(route.params.pokemon) ? (
+const pokemon_data = usePokemonStore();
+const pokemon_name = computed(() => pokemon_data.keys.includes(route.params.pokemon) ? (
     route.params.pokemon) : (
-    Object.keys(pokemons)[39]);
-console.log(pokemon_name)
-const pokemon_image = pokemon_name.toLowerCase().replace(' ', '-');
-const current_pokemon = pokemons[pokemon_name];
+    pokemon_data.keys[39]));
+const pokemon_image = computed(() => pokemon_name.value.toLowerCase().replace(' ', '-'));
+const current_pokemon = computed(() => pokemon_data.pokemons[pokemon_name.value]);
+console.log(pokemon_name.value)
 </script>
 
 <template>
@@ -65,28 +66,26 @@ const current_pokemon = pokemons[pokemon_name];
     display: grid;
     grid-template-columns: repeat(20, 1fr);
     grid-template-rows: 1fr 3fr;
-    height: 100vh;
-    width: 100vw;
     max-height: 100%;
 }
 
 .grid1 {
     grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column-end: 5;
 }
 
 .grid2 {
-    grid-column-start: 4;
+    grid-column-start: 5;
     grid-column-end: 8;
 }
 
 .grid3 {
     grid-column-start: 8;
-    grid-column-end: 11;
+    grid-column-end: 12;
 }
 
 .grid4 {
-    grid-column-start: 11;
+    grid-column-start: 12;
     grid-column-end: 16;
 }
 
