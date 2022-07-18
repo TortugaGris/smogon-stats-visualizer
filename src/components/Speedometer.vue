@@ -1,5 +1,6 @@
 <script setup>
 import { arc } from "d3";
+import { computed } from 'vue';
 
 const props = defineProps({
   usage: {
@@ -14,17 +15,17 @@ function percentage_to_angle(percentage) {
 
 const radius = 150;
 const thickness = 30;
-const backgroundArc = arc()
+const backgroundArc = computed(() => arc()
     .innerRadius(radius - thickness)
     .outerRadius(radius)
     .startAngle(- Math.PI/2)
-    .endAngle(Math.PI/2);
+    .endAngle(Math.PI/2));
 
-const mainArc = arc()
+const mainArc = computed(() => arc()
     .innerRadius(radius - thickness)
     .outerRadius(radius)
     .startAngle(- Math.PI/2)
-    .endAngle(percentage_to_angle(props.usage));
+    .endAngle(percentage_to_angle(props.usage)));
 </script>
 
 <template>
