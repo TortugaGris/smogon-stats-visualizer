@@ -7,6 +7,20 @@ export const usePokemonStore = defineStore({
     pokemons: json.data,
   }),
   getters: {
-    keys: (state) => Object.keys(state.pokemons)
+    keys: (state) => Object.keys(state.pokemons),
+    pokemonImageName: () => {
+      return (pokemon_name) => {
+        let tmp_name = pokemon_name
+          .toLowerCase()
+          .replace(' ', '-')
+          .replace('.', '')
+          .replace('%', '');
+        if (tmp_name === 'urshifu-rapid-strike') {
+          return 'urshifu';
+        } else {
+          return tmp_name;
+        }
+      }
+    },
   }
 })

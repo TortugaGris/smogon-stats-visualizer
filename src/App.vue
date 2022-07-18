@@ -9,10 +9,10 @@ const pokemon_data = usePokemonStore();
     <nav>
       <RouterLink 
         v-for="pokemon in pokemon_data.keys" 
-        :to="'/' + pokemon">
+        :to="{ params: {pokemon: pokemon}}">
           <span 
-            class="pokesprite pokemon-gen8" 
-            :class="pokemon.toLowerCase().replace(' ', '-')"/>
+            class="pokesprite pokemon-gen8 nav-pokemon" 
+            :class="pokemon_data.pokemonImageName(pokemon)"/>
       </RouterLink>
     </nav>
   </header>
@@ -29,15 +29,19 @@ const pokemon_data = usePokemonStore();
 
 nav {
   --pixel-size: 1;
-  background-color: black;
   width: var(--navbar-size);
   height: 100vh;
   position: fixed;
+  background-color: black;
   overflow: auto;
 }
 
 main {
   margin-left: var(--navbar-size);
+}
+
+nav .nav-pokemon:hover {
+  background-color: gray; 
 }
 
 </style>

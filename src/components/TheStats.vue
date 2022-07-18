@@ -13,7 +13,7 @@ const pokemon_data = usePokemonStore();
 const pokemon_name = computed(() => pokemon_data.keys.includes(route.params.pokemon) ? (
     route.params.pokemon) : (
     pokemon_data.keys[39]));
-const pokemon_image = computed(() => pokemon_name.value.toLowerCase().replace(' ', '-'));
+const pokemon_image = computed(() => pokemon_data.pokemonImageName(pokemon_name.value));
 const current_pokemon = computed(() => pokemon_data.pokemons[pokemon_name.value]);
 console.log(pokemon_name.value)
 </script>
